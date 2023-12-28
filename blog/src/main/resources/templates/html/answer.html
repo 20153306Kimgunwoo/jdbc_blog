@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="/css/insert.css" rel="stylesheet" type="text/css">
+    <title>Answer Data</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h2>게시판 상세 정보</h2>
+            <h3>제목</h3>
+            <div th:utext="${title}"></div>
+            <h3>내용</h3>
+            <div th:utext="${content}"></div>
+            <ul th:if="${answers != null and answers.size() > 0}">
+                <li th:each="answer : ${answers}" th:text="${answer['answer']}"></li>
+            </ul>
+
+            <form action="/blog/answer/execute" method="get">
+                <input type="hidden" name="seq" th:value="${seq}" />
+                <textarea name="answer" class="answer-box"></textarea><br>
+                <div class="answer-insert"><button type="submit">답글 등록</button></div>
+            </form>
+            <div>
+                <a href="/blog/list"><button>목록으로</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+    <html>
+        <head>
+            <link href="/css/insert.css" rel="stylesheet" type="text/css">
+        </head>
+        <title>Insert Data</title>
+        <form action="/blog/insert/execute" method="get" class="wrapper">
+            <div class="container">
+                <div class="sign-in-container">
+                    <h3>제목</h3> <input type="text" name="title" class="title-box"><br>
+                    <h3>내용</h3><textarea name="content" class="content-box"></textarea><br>
+                    <h3 class="writer">작성자</h3> <input type="text" name="writer" class="writer-box"><br>
+                    <button type="submit" class="form_btn">저장</button>
+                    <a href="/blog/upload"><button type="button" class="form_btn">파일 업로드</button></a>
+                </div>
+            </div>
+        </form>
+    </html>

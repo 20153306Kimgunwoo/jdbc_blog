@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="/css/list.css" rel="stylesheet" type="text/css">
+    <title>Data Information</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h2>게시판 상세 정보</h2>
+            <h3>제목</h3>
+            <h4 th:utext="${title}"></h4>
+            <h3>내용</h3>
+            <h4 th:utext="${content}"></h4>
+            <div class="replyList">
+                <h3>댓글</h3>
+            <ul th:if="${answers != null and answers.size() > 0}">
+                <li th:each="answer : ${answers}" th:text="${answer['answer']}"></li>
+            </ul>
+            </div> 
+        <div class="buttons">    
+            <form action="/blog/delete" method="get" style="float:right; margin-top: 100px;">
+                <input type="hidden" name="seq" th:value="${seq}" />
+                <button type="submit">삭제</button>
+            </form> 
+            <form action="/blog/update" method="get" style="float:right; margin-top:100px;">
+                <input type="hidden" name="seq" th:value="${seq}" />
+                <button type="submit">수정</button>
+            </form>
+            <div class="replyAndHome">
+                <a href="/blog/list"><button>목록으로</button></a>
+                <a th:href="@{'/blog/answer?seq=' + ${seq}}"><button>답글달기</button></a>
+            </div>
+        </div>
+            
+        </div>
+    </div>
+</body>
+</html>

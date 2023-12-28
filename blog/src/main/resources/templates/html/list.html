@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link href="/css/list.css" rel="stylesheet" type="text/css">
+    <title>Welcome!!!</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h2>게시판</h2>
+            <div class="user-menu">
+                <span th:text="'안녕하세요, ' + ${loggedInUserId} + '님'"></span>
+                <a th:href="@{/logout}"><button type="submit">Logout</button></a>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="qrySet, iterStat : ${qrySet}">
+                        <td th:text="${iterStat.index + 1}"></td>
+                        <td><a th:href="@{'/blog/detail?seq=' + ${qrySet.seq}}" th:text="${qrySet.title}"></a></td>
+                        <td th:text="${qrySet.writer}"></td>
+                        <td th:text="${qrySet['search_count']}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <div class="write-content"><a href="/blog/insert"><button type="submit">글쓰기</button></a></div>
+        </div>
+    </div>
+</body>
+</html>

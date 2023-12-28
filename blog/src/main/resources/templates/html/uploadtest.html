@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css" type="text/css">
+    <title>File Upload</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <form method="post" enctype="multipart/form-data" action="/blog/upload">
+                <input type="file" name="file"><br>
+                <input type="hidden" name="originFileName" placeholder="Origin File Name"><br>
+                <input type="hidden" name="uuid" placeholder="UUID"><br>
+                <input type="hidden" name="memberId" th:value="${session.memberId}" placeholder="Member ID"><br>
+                <button type="submit" class="form_btn">업로드</button>
+            </form>
+            
+        </div>
+    </div>
+    
+</body>
+</html>
